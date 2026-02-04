@@ -313,7 +313,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div 
-            className="flex gap-2"
+            className="flex flex-wrap gap-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -322,10 +322,11 @@ export default function Home() {
               variant="outline"
               size="sm"
               onClick={handleToday}
-              className="flex-1 hover:bg-blue-50 hover:border-blue-300 transition-colors"
+              className="flex-1 min-w-[80px] hover:bg-blue-50 hover:border-blue-300 transition-colors"
             >
-              <Calendar className="h-4 w-4 mr-2" />
-              Today
+              <Calendar className="h-4 w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Today</span>
+              <span className="sm:hidden">Now</span>
             </Button>
             
             <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
@@ -333,9 +334,9 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="flex-1 hover:bg-purple-50 hover:border-purple-300 transition-colors"
+                  className="flex-1 min-w-[80px] hover:bg-purple-50 hover:border-purple-300 transition-colors"
                 >
-                  📅 Pick Date
+                  📅 <span className="ml-1 sm:ml-2">Date</span>
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
@@ -353,20 +354,22 @@ export default function Home() {
               variant="outline"
               size="sm"
               onClick={handleExportCSV}
-              className="hover:bg-green-50 hover:border-green-300 transition-colors"
+              className="flex-1 min-w-[80px] hover:bg-green-50 hover:border-green-300 transition-colors"
             >
-              <Download className="h-4 w-4 mr-2" />
-              Export
+              <Download className="h-4 w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Export</span>
+              <span className="sm:hidden">Save</span>
             </Button>
             
             <Button
               variant="outline"
               size="sm"
               onClick={handleImportJSON}
-              className="hover:bg-blue-50 hover:border-blue-300 transition-colors"
+              className="flex-1 min-w-[80px] hover:bg-blue-50 hover:border-blue-300 transition-colors"
             >
-              <Upload className="h-4 w-4 mr-2" />
-              Import
+              <Upload className="h-4 w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Import</span>
+              <span className="sm:hidden">Load</span>
             </Button>
           </motion.div>
           
