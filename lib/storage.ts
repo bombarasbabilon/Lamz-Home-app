@@ -34,6 +34,14 @@ export const getEmptyDayEntry = (date: string): DayEntry => ({
     napTime: "",
     sleepTime: "",
   },
+  water: {
+    intake: 0,
+    goal: 8,
+  },
+  weight: {
+    lamisa: "",
+    raed: "",
+  },
   observations: "",
 });
 

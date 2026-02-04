@@ -19,6 +19,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
       sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "17:00:00" },
+      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: "Started the day late, meals got pushed out and did workout. Need to plan day earlier."
     },
     {
@@ -34,8 +36,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: ["1.5 low mashi seeds, Scrambled Omelette (1/2 a Tomato, Onion, Spinach, 2 Mushrooms, 1 egg + 2 egg whites"], notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
-      sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "2:00:30" },
-      observations: "Started the day late again, getting towards the end of the day. Need to start day earlier, need to prep food for ingredients in advance"
+      sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "2:00:30" },      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: "Started the day late again, getting towards the end of the day. Need to start day earlier, need to prep food for ingredients in advance"
     },
     {
       date: "2026-01-08",
@@ -50,8 +52,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: [], notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
-      sleep: { wakeTime: "11:00:00", napTime: "", sleepTime: "2:00:30" },
-      observations: "Almost got a workout in but had a family emergency to attend. Not happy with sleeping late as well"
+      sleep: { wakeTime: "11:00:00", napTime: "", sleepTime: "2:00:30" },      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: "Almost got a workout in but had a family emergency to attend. Not happy with sleeping late as well"
     },
     {
       date: "2026-01-09",
@@ -66,8 +68,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: [], notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
-      sleep: { wakeTime: "11:00:00", napTime: "", sleepTime: "4:00:30" },
-      observations: "Woke up late so combined with lunch and ate three meals. Better for macro tracking"
+      sleep: { wakeTime: "11:00:00", napTime: "", sleepTime: "4:00:30" },      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: "Woke up late so combined with lunch and ate three meals. Better for macro tracking"
     },
     {
       date: "2026-01-10",
@@ -82,8 +84,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: [], notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
-      sleep: { wakeTime: "11:00:00", napTime: "", sleepTime: "2:00:30" },
-      observations: "Went to David's for dinner but didn't eat cheat meal"
+      sleep: { wakeTime: "11:00:00", napTime: "", sleepTime: "2:00:30" },      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: "Went to David's for dinner but didn't eat cheat meal"
     },
     {
       date: "2026-01-11",
@@ -98,8 +100,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: [], notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
-      sleep: { wakeTime: "12:00:00", napTime: "", sleepTime: "5:00:30" },
-      observations: "Cheat day"
+      sleep: { wakeTime: "12:00:00", napTime: "", sleepTime: "5:00:30" },      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: "Cheat day"
     },
     {
       date: "2026-01-12",
@@ -115,6 +117,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
       sleep: { wakeTime: "1:00:00", napTime: "", sleepTime: "2:30:30" },
+      water: { intake: 0, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: ""
     },
     // Week 263 - January 13-19, 2026 (Compliant days with workouts)
@@ -132,6 +136,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: true, cardioDuration: "80", weightTraining: "60" },
       sleep: { wakeTime: "7:00:00", napTime: "", sleepTime: "" },
+      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: ""
     },
     {
@@ -147,8 +153,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: [], notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: true, cardioDuration: "60", weightTraining: "N/A" },
-      sleep: { wakeTime: "9:00:00", napTime: "", sleepTime: "2:30:30" },
-      observations: ""
+      sleep: { wakeTime: "9:00:00", napTime: "", sleepTime: "2:30:30" },      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: ""
     },
     {
       date: "2026-01-15",
@@ -164,6 +170,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: true, cardioDuration: "60", weightTraining: "N/A" },
       sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "" },
+      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: ""
     },
     {
@@ -179,8 +187,8 @@ export const seedHistoricalData = () => {
         supper: { id: crypto.randomUUID(), time: "", foods: [] , notes: "", timestamp: Date.now() }
       },
       workout: { didWorkout: true, cardioDuration: "60", weightTraining: "N/A" },
-      sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "2:00:30" },
-      observations: ""
+      sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "2:00:30" },      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },      observations: ""
     },
     {
       date: "2026-01-17",
@@ -196,6 +204,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
       sleep: { wakeTime: "10:00:00", napTime: "", sleepTime: "" },
+      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: ""
     },
     {
@@ -212,6 +222,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: false, cardioDuration: "N/A", weightTraining: "N/A" },
       sleep: { wakeTime: "", napTime: "", sleepTime: "1:00:30" },
+      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: ""
     },
     {
@@ -228,6 +240,8 @@ export const seedHistoricalData = () => {
       },
       workout: { didWorkout: true, cardioDuration: "60", weightTraining: "N/A" },
       sleep: { wakeTime: "", napTime: "", sleepTime: "3:00:30" },
+      water: { intake: 8, goal: 8 },
+      weight: { lamisa: "", raed: "" },
       observations: "Clean Bulk day"
     }
   ];
