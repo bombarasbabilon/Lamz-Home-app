@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Calendar, Download, Check, AlertTriangle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, Download, Check, AlertTriangle, Upload, Settings } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
@@ -29,6 +29,10 @@ import {
   parseDate,
   exportToJSON,
   exportToCSV,
+  initializeStorage,
+  isFirstVisit,
+  importFromJSON,
+  clearAllData,
 } from "@/lib/storage";
 import type { DayEntry } from "@/lib/types";
 
@@ -38,6 +42,23 @@ export default function Home() {
   const [direction, setDirection] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
+
+  // Initialize storage and load seed data on first mount
+  useEffect(() => {
+    initializeStorage();
+    
+    const firstVisit = isFirstVisit();
+    if (firstVisit) {
+      const seeded = seedHistoricalData();
+      if (seeded) {
+        toast.success("📚 Historical data loaded!", {
+          duration: 3000,
+          icon: "✅",
+        });
+      }
+    }
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,6 +66,14 @@ export default function Home() {
     setDayEntry(entry);
     setTimeout(() => setIsLoading(false), 300);
   }, [currentDate]);
+
+  // Auto-save effect
+  useEffect(() => {
+    if (dayEntry) {
+      saveDayEntry(dayEntry);
+      setLastSaved(new Date());
+    }
+  }, [dayEntry]);
 
   const handlePreviousDay = () => {
     setDirection(-1);
@@ -112,6 +141,34 @@ export default function Home() {
     a.download = `health-tracker-${formatDate(new Date())}.csv`;
     a.click();
     toast.success("Exported to CSV!");
+  };
+
+  const handleImportJSON = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const jsonString = event.target?.result as string;
+          const success = importFromJSON(jsonString);
+          if (success) {
+            toast.success("✅ Data imported successfully!");
+            setDayEntry(getDayEntry(currentDate));
+          } else {
+            toast.error("❌ Failed to import data");
+          }
+        } catch (error) {
+          toast.error("❌ Invalid JSON file");
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
   };
 
   const handleSeedData = () => {
@@ -299,9 +356,32 @@ export default function Home() {
               className="hover:bg-green-50 hover:border-green-300 transition-colors"
             >
               <Download className="h-4 w-4 mr-2" />
-              CSV
+              Export
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleImportJSON}
+              className="hover:bg-blue-50 hover:border-blue-300 transition-colors"
+            >
+              <Upload className="h-4 w-4 mr-2" />
+              Import
             </Button>
           </motion.div>
+          
+          {/* Auto-save Indicator */}
+          {lastSaved && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="text-center text-xs text-green-600 mt-2 flex items-center justify-center gap-1"
+            >
+              <Check className="w-3 h-3" />
+              <span>All changes saved automatically</span>
+            </motion.div>
+          )}
         </div>
       </motion.header>
 

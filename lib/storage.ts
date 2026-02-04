@@ -97,6 +97,24 @@ export const getAllEntries = (): Record<string, DayEntry> => {
   }
 };
 
+export const isFirstVisit = (): boolean => {
+  if (typeof window === "undefined") return false;
+  return !localStorage.getItem(STORAGE_KEY);
+};
+
+export const initializeStorage = (): void => {
+  if (typeof window === "undefined") return;
+  
+  // Check if this is first visit
+  const isFirst = isFirstVisit();
+  
+  if (isFirst) {
+    // Initialize with empty object - seed data will be loaded separately
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({}));
+    console.log("Storage initialized for first visit");
+  }
+};
+
 export const updateMeal = (
   date: string,
   mealTime: MealTime,
@@ -257,4 +275,22 @@ export const exportToCSV = (): string => {
   });
   
   return rows.join("\n");
+};
+
+export const importFromJSON = (jsonString: string): boolean => {
+  try {
+    const data = JSON.parse(jsonString);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    console.log("Data imported successfully");
+    return true;
+  } catch (error) {
+    console.error("Error importing data:", error);
+    return false;
+  }
+};
+
+export const clearAllData = (): void => {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(STORAGE_KEY);
+  console.log("All data cleared");
 };

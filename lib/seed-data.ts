@@ -1,8 +1,15 @@
-import { saveDayEntry } from "./storage";
+import { saveDayEntry, getAllEntries } from "./storage";
 import type { DayEntry } from "./types";
 
 // Historical data from spreadsheet
-export const seedHistoricalData = () => {
+export const seedHistoricalData = (): boolean => {
+  // Check if data already exists
+  const existingData = getAllEntries();
+  if (Object.keys(existingData).length > 0) {
+    console.log("Data already exists, skipping seed");
+    return false;
+  }
+
   const historicalData: DayEntry[] = [
     // Week 262-B - January 6-12, 2026 (Non-compliant days)
     {
