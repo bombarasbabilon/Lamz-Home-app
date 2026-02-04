@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        canvas {
+            display: none;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        .preview {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .preview-item {
+            text-align: center;
+        }
+        .preview img {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏃‍♂️ Health Tracker PWA Icons</h1>
+        <p>Generate icons for your iOS home screen app</p>
+        
+        <div>
+            <button onclick="generateAllIcons()">Generate All Icons</button>
+        </div>
+        
+        <div class="preview" id="preview"></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(0.5, '#764ba2');
+            gradient.addColorStop(1, '#f093fb');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Add some health-themed elements
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath();
+            ctx.arc(size * 0.3, size * 0.3, size * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.beginPath();
+            ctx.arc(size * 0.7, size * 0.7, size * 0.35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Heart symbol (health icon)
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.5}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('❤️', size / 2, size / 2);
+            
+            // Add subtle text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = `bold ${size * 0.12}px Arial`;
+            ctx.fillText('HEALTH', size / 2, size * 0.85);
+        }
+
+        function downloadIcon(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function createPreview(canvas, size, filename) {
+            const preview = document.getElementById('preview');
+            const item = document.createElement('div');
+            item.className = 'preview-item';
+            
+            const img = document.createElement('img');
+            img.src = canvas.toDataURL('image/png');
+            img.width = Math.min(size, 180);
+            img.height = Math.min(size, 180);
+            
+            const label = document.createElement('p');
+            label.textContent = `${size}x${size}`;
+            label.style.marginTop = '10px';
+            label.style.fontSize = '14px';
+            label.style.color = '#666';
+            
+            item.appendChild(img);
+            item.appendChild(label);
+            preview.appendChild(item);
+        }
+
+        function generateAllIcons() {
+            const canvas = document.getElementById('canvas');
+            const sizes = [
+                { size: 192, name: 'icon-192x192.png' },
+                { size: 512, name: 'icon-512x512.png' },
+                { size: 180, name: 'apple-touch-icon.png' }
+            ];
+            
+            document.getElementById('preview').innerHTML = '';
+            
+            sizes.forEach(({ size, name }) => {
+                drawIcon(canvas, size);
+                downloadIcon(canvas, name);
+                createPreview(canvas, size, name);
+            });
+            
+            alert('✅ Icons generated! Check your Downloads folder.\n\nMove these files to the /public folder:\n• icon-192x192.png\n• icon-512x512.png\n• apple-touch-icon.png');
+        }
+    </script>
+</body>
+</html>
