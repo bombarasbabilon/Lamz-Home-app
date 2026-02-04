@@ -254,9 +254,10 @@ export const seedHistoricalData = (): boolean => {
   ];
 
   // Save all historical data
-  historicalData.forEach(entry => {
+  historicalData.forEach((entry) => {
     saveDayEntry(entry);
   });
-
-  console.log(`Seeded ${historicalData.length} days of historical data`);
+  
+  console.log(`Seeded ${historicalData.length} historical entries`);
+  return true;
 };
