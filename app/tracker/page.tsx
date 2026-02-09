@@ -104,51 +104,51 @@ export default function TrackerPage() {
           <div className="flex items-center space-x-2">
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition-all duration-200 active:scale-95 backdrop-blur-sm ${
+              className={`p-3 min-w-[48px] min-h-[48px] rounded-full transition-all duration-200 active:scale-95 backdrop-blur-sm flex items-center justify-center ${
                 darkMode ? 'hover:bg-yellow-500/20' : 'hover:bg-white/20'
               }`}
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
-                <Sun size={20} className="text-yellow-400 drop-shadow-md" />
+                <Sun size={24} className="text-yellow-400 drop-shadow-md" />
               ) : (
-                <Moon size={20} className="text-white drop-shadow-md" />
+                <Moon size={24} className="text-white drop-shadow-md" />
               )}
             </button>
             <button
               onClick={handleLogout}
-              className={`p-2 rounded-full transition-all duration-200 active:scale-95 backdrop-blur-sm ${
+              className={`p-3 min-w-[48px] min-h-[48px] rounded-full transition-all duration-200 active:scale-95 backdrop-blur-sm flex items-center justify-center ${
                 darkMode ? 'hover:bg-yellow-500/20' : 'hover:bg-white/20'
               }`}
               aria-label="Logout"
             >
-              <LogOut size={20} className={`drop-shadow-md ${darkMode ? 'text-yellow-400' : 'text-white'}`} />
+              <LogOut size={24} className={`drop-shadow-md ${darkMode ? 'text-yellow-400' : 'text-white'}`} />
             </button>
           </div>
         </div>
 
         {/* Date Navigation */}
-        <div className="px-4 py-3 flex items-center justify-between">
+        <div className="px-4 py-4 flex items-center justify-between">
           <button
             onClick={handlePreviousDay}
-            className={`p-2 rounded-full transition-all duration-200 active:scale-95 backdrop-blur-sm ${
+            className={`p-3 min-w-[48px] min-h-[48px] rounded-full transition-all duration-200 active:scale-95 backdrop-blur-sm flex items-center justify-center ${
               darkMode ? 'hover:bg-yellow-500/20' : 'hover:bg-white/20'
             }`}
             aria-label="Previous day"
           >
-            <ChevronLeft size={24} className={`drop-shadow-md ${darkMode ? 'text-yellow-400' : 'text-white'}`} />
+            <ChevronLeft size={28} className={`drop-shadow-md ${darkMode ? 'text-yellow-400' : 'text-white'}`} />
           </button>
 
           <button
             onClick={() => setShowDatePicker(true)}
-            className={`flex items-center space-x-2 px-6 py-2.5 backdrop-blur-sm rounded-full transition-all duration-200 active:scale-95 shadow-lg ${
+            className={`flex items-center space-x-3 px-6 py-3 min-h-[48px] backdrop-blur-sm rounded-full transition-all duration-200 active:scale-95 shadow-lg ${
               darkMode
                 ? 'bg-yellow-500/20 hover:bg-yellow-500/30'
                 : 'bg-white/20 hover:bg-white/30'
             }`}
           >
-            <Calendar size={20} className={darkMode ? 'text-yellow-400' : 'text-white'} />
-            <span className={`font-bold drop-shadow-md ${
+            <Calendar size={22} className={darkMode ? 'text-yellow-400' : 'text-white'} />
+            <span className={`font-bold text-base drop-shadow-md ${
               darkMode ? 'text-yellow-400' : 'text-white'
             }`}>
               {isToday ? 'Today' : format(selectedDate, 'MMM dd, yyyy')}
@@ -158,12 +158,12 @@ export default function TrackerPage() {
           <button
             onClick={handleNextDay}
             disabled={isFutureDate}
-            className={`p-2 rounded-full transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed active:scale-95 backdrop-blur-sm ${
+            className={`p-3 min-w-[48px] min-h-[48px] rounded-full transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed active:scale-95 backdrop-blur-sm flex items-center justify-center ${
               darkMode ? 'hover:bg-yellow-500/20' : 'hover:bg-white/20'
             }`}
             aria-label="Next day"
           >
-            <ChevronRight size={24} className={`drop-shadow-md ${darkMode ? 'text-yellow-400' : 'text-white'}`} />
+            <ChevronRight size={28} className={`drop-shadow-md ${darkMode ? 'text-yellow-400' : 'text-white'}`} />
           </button>
         </div>
 
@@ -175,7 +175,7 @@ export default function TrackerPage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 min-w-[80px] py-3 text-sm font-bold transition-all duration-300 relative ${
+              className={`flex-1 min-w-[90px] py-4 text-base font-bold transition-all duration-300 relative active:scale-95 ${
                 activeTab === tab.id
                   ? darkMode ? 'text-yellow-400' : 'text-white'
                   : darkMode ? 'text-gray-400 hover:text-gray-200' : 'text-white/70 hover:text-white/90'

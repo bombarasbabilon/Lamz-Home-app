@@ -56,43 +56,43 @@ export default function WaterTracker({ selectedDate, username }: WaterTrackerPro
   const isCompleted = glasses >= target
 
   return (
-    <div className="p-4 space-y-6 safe-area-inset-bottom">
-      <div className="bg-white rounded-2xl shadow-sm p-6">
-        <div className="flex items-center space-x-2 mb-6">
-          <Droplet className="text-blue-500" size={24} />
-          <h2 className="text-xl font-bold text-gray-900">Water Intake</h2>
+    <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-24">
+      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+        <div className="flex items-center space-x-3 mb-8">
+          <Droplet className="text-blue-500" size={28} />
+          <h2 className="text-2xl font-bold text-gray-900">Water Intake</h2>
         </div>
 
         {/* Progress Circle */}
-        <div className="flex justify-center mb-8">
-          <div className="relative w-48 h-48">
+        <div className="flex justify-center mb-10">
+          <div className="relative w-56 h-56">
             {/* Background Circle */}
-            <svg className="transform -rotate-90 w-48 h-48">
+            <svg className="transform -rotate-90 w-56 h-56">
               <circle
-                cx="96"
-                cy="96"
-                r="88"
+                cx="112"
+                cy="112"
+                r="100"
                 stroke="#e5e7eb"
-                strokeWidth="16"
+                strokeWidth="18"
                 fill="none"
               />
               <circle
-                cx="96"
-                cy="96"
-                r="88"
+                cx="112"
+                cy="112"
+                r="100"
                 stroke={isCompleted ? '#10b981' : '#3b82f6'}
-                strokeWidth="16"
+                strokeWidth="18"
                 fill="none"
-                strokeDasharray={`${2 * Math.PI * 88}`}
-                strokeDashoffset={`${2 * Math.PI * 88 * (1 - percentage / 100)}`}
+                strokeDasharray={`${2 * Math.PI * 100}`}
+                strokeDashoffset={`${2 * Math.PI * 100 * (1 - percentage / 100)}`}
                 strokeLinecap="round"
                 className="transition-all duration-500"
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-5xl font-bold text-gray-900">{glasses}</span>
-              <span className="text-sm text-gray-500">of {target} glasses</span>
-              <span className="text-xs text-gray-400 mt-1">{Math.round(percentage)}%</span>
+              <span className="text-6xl font-bold text-gray-900">{glasses}</span>
+              <span className="text-base text-gray-500 mt-1">of {target} glasses</span>
+              <span className="text-sm text-gray-400 mt-1">{Math.round(percentage)}%</span>
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function WaterTracker({ selectedDate, username }: WaterTrackerPro
           </div>
 
           {/* Quick Add Buttons */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-4">
             {[1, 2, 3].map((num) => (
               <button
                 key={num}
@@ -134,7 +134,7 @@ export default function WaterTracker({ selectedDate, username }: WaterTrackerPro
                     timestamps: newTimestamps,
                   })
                 }}
-                className="py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-colors active:scale-95"
+                className="py-4 min-h-[56px] bg-gradient-to-br from-gray-100 to-gray-200 hover:from-blue-50 hover:to-blue-100 text-gray-700 hover:text-blue-700 rounded-xl text-lg font-bold transition-all active:scale-95 shadow-sm"
               >
                 +{num}
               </button>
@@ -167,8 +167,8 @@ export default function WaterTracker({ selectedDate, username }: WaterTrackerPro
 
           {/* Success Message */}
           {isCompleted && (
-            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4">
-              <p className="text-center text-green-700 font-medium">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl p-5 shadow-sm">
+              <p className="text-center text-green-700 font-bold text-lg">
                 🎉 Great job! You've reached your daily goal!
               </p>
             </div>

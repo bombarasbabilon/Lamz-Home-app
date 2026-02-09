@@ -91,18 +91,18 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
   }
 
   return (
-    <div className="p-4 space-y-6 safe-area-inset-bottom">
+    <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-24">
       {/* Weight Tracker Card */}
-      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-sm p-6 border-2 border-purple-200">
-        <div className="flex items-center space-x-2 mb-4">
-          <Scale className="text-purple-600" size={24} />
-          <h2 className="text-xl font-bold text-gray-900">Weight Tracker</h2>
+      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-6 border-2 border-purple-200">
+        <div className="flex items-center space-x-3 mb-6">
+          <Scale className="text-purple-600" size={28} />
+          <h2 className="text-2xl font-bold text-gray-900">Weight Tracker</h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {/* Weight Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-base font-semibold text-gray-700 mb-3">
               Current Weight
             </label>
             <div className="flex items-center space-x-3">
@@ -114,12 +114,12 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
                   onBlur={handleWeightSave}
                   placeholder="Enter weight"
                   step="0.1"
-                  className="w-full px-4 py-3 text-2xl font-bold text-center border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-5 py-4 text-3xl font-bold text-center border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
                 />
               </div>
               
               {/* Unit Toggle */}
-              <div className="flex bg-white rounded-xl border-2 border-purple-300 overflow-hidden">
+              <div className="flex bg-white rounded-xl border-2 border-purple-300 overflow-hidden shadow-sm">
                 <button
                   onClick={() => {
                     const newWeight = weightData.unit === 'kg' 
@@ -128,7 +128,7 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
                     setWeightData(newWeight)
                     if (newWeight.weight > 0) updateWeight(dateStr, username, newWeight)
                   }}
-                  className={`px-4 py-3 font-bold transition-colors ${
+                  className={`px-5 py-4 min-w-[60px] font-bold text-base transition-all active:scale-95 ${
                     weightData.unit === 'lbs'
                       ? 'bg-purple-600 text-white'
                       : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -177,7 +177,7 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
 
           {/* Weight Notes */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-base font-semibold text-gray-700 mb-3">
               Notes (optional)
             </label>
             <textarea
@@ -185,16 +185,16 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
               onChange={(e) => setWeightData({ ...weightData, notes: e.target.value })}
               onBlur={handleWeightSave}
               placeholder="How are you feeling? Any observations..."
-              rows={2}
-              className="w-full px-4 py-3 border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+              rows={3}
+              className="w-full px-5 py-4 text-base border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none transition-all"
             />
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-sm p-6">
-        <div className="flex items-center space-x-2 mb-6">
-          <Dumbbell className="text-green-600" size={24} />
-          <h2 className="text-xl font-bold text-gray-900">Workout</h2>
+      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+        <div className="flex items-center space-x-3 mb-8">
+          <Dumbbell className="text-green-600" size={28} />
+          <h2 className="text-2xl font-bold text-gray-900">Workout</h2>
         </div>
 
         {workoutData.completed ? (
@@ -233,21 +233,21 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
           <div className="space-y-4">
             {/* Workout Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-base font-semibold text-gray-700 mb-3">
                 Workout Type
               </label>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 {WORKOUT_TYPES.map((type) => (
                   <button
                     key={type}
                     onClick={() => setWorkoutData({ ...workoutData, type })}
-                    className={`p-3 rounded-xl border-2 transition-all ${
+                    className={`p-4 min-h-[56px] rounded-xl border-2 transition-all active:scale-95 ${
                       workoutData.type === type
                         ? 'bg-green-500 text-white border-transparent'
                         : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <span className="font-medium text-sm">{type}</span>
+                    <span className="font-semibold text-base">{type}</span>
                   </button>
                 ))}
               </div>

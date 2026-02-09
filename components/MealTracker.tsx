@@ -96,11 +96,11 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
   }
 
   return (
-    <div className="p-4 space-y-3 safe-area-inset-bottom pb-20">
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-        <div className="p-4 flex items-center space-x-2 border-b border-gray-100">
-          <Utensils className="text-orange-600" size={24} />
-          <h2 className="text-xl font-bold text-gray-900">Meals</h2>
+    <div className="p-3 sm:p-4 space-y-3 safe-area-inset-bottom pb-24">
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="p-5 flex items-center space-x-3 border-b border-gray-100">
+          <Utensils className="text-orange-600" size={28} />
+          <h2 className="text-2xl font-bold text-gray-900">Meals</h2>
         </div>
 
         {MEAL_TYPES.map((meal) => {
@@ -113,7 +113,7 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
             <div key={meal.id} className="border-b border-gray-100 last:border-b-0">
               <button
                 onClick={() => handleToggleMeal(meal.id)}
-                className={`w-full p-4 flex items-center justify-between transition-colors ${
+                className={`w-full p-5 min-h-[70px] flex items-center justify-between transition-all active:scale-[0.98] ${
                   hasData
                     ? isCompliant
                       ? 'bg-blue-50 hover:bg-blue-100'
@@ -121,8 +121,8 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                     : 'hover:bg-gray-50'
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-2 h-2 rounded-full ${
+                <div className="flex items-center space-x-4">
+                  <div className={`w-3 h-3 rounded-full ${
                     hasData
                       ? isCompliant
                         ? 'bg-blue-500'
@@ -130,26 +130,26 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                       : 'bg-gray-300'
                   }`} />
                   <div className="text-left">
-                    <div className="font-semibold text-gray-900">{meal.label}</div>
-                    <div className="text-sm text-gray-500">{meal.time}</div>
+                    <div className="font-bold text-lg text-gray-900">{meal.label}</div>
+                    <div className="text-base text-gray-500">{meal.time}</div>
                   </div>
                 </div>
-                {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
               </button>
 
               {isExpanded && (
-                <div className="p-4 bg-gray-50 space-y-4">
+                <div className="p-5 bg-gray-50 space-y-5">
                   {/* Compliant Toggle */}
-                  <div className="flex items-center justify-between bg-white rounded-xl p-3">
-                    <span className="text-sm font-medium text-gray-700">Following diet plan?</span>
+                  <div className="flex items-center justify-between bg-white rounded-xl p-4">
+                    <span className="text-base font-semibold text-gray-700">Following diet plan?</span>
                     <button
                       onClick={handleToggleCompliant}
-                      className={`relative w-14 h-8 rounded-full transition-colors ${
+                      className={`relative w-16 h-9 rounded-full transition-colors active:scale-95 ${
                         currentMealData?.compliant ? 'bg-blue-500' : 'bg-gray-300'
                       }`}
                     >
                       <div
-                        className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-transform ${
+                        className={`absolute top-1 w-7 h-7 bg-white rounded-full shadow transition-transform ${
                           currentMealData?.compliant ? 'translate-x-7' : 'translate-x-1'
                         }`}
                       />
@@ -158,8 +158,8 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
 
                   {/* Added Items */}
                   {currentMealData && currentMealData.items.length > 0 && (
-                    <div className="space-y-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                    <div className="space-y-3">
+                      <label className="block text-base font-semibold text-gray-700">
                         Items
                       </label>
                       <div className="space-y-2">
@@ -183,10 +183,10 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
 
                   {/* Custom Food Input */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-base font-semibold text-gray-700 mb-3">
                       Add Custom Item
                     </label>
-                    <div className="flex gap-2">
+                    <div className="flex gap-3">
                       <input
                         type="text"
                         value={customFood}
@@ -197,11 +197,11 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                           }
                         }}
                         placeholder="Enter food item..."
-                        className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="flex-1 px-5 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                       />
                       <button
                         onClick={handleAddCustomFood}
-                        className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
+                        className="px-7 py-4 min-h-[56px] bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl text-base font-bold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
                       >
                         Add
                       </button>
@@ -210,15 +210,15 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
 
                   {/* Quick Add Foods */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-base font-semibold text-gray-700 mb-3">
                       Quick Add
                     </label>
-                    <div className="grid grid-cols-1 gap-2 max-h-60 overflow-y-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-80 overflow-y-auto">
                       {QUICK_FOODS.map((food) => (
                         <button
                           key={food}
                           onClick={() => handleAddItem(food)}
-                          className="text-left p-3 bg-white hover:bg-blue-50 rounded-lg text-sm transition-colors border border-gray-200"
+                          className="text-left p-4 min-h-[56px] bg-white hover:bg-blue-50 active:bg-blue-100 rounded-xl text-base font-medium transition-all active:scale-[0.98] border-2 border-gray-200 hover:border-blue-300"
                         >
                           {food}
                         </button>
@@ -228,15 +228,15 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
 
                   {/* Notes */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-base font-semibold text-gray-700 mb-3">
                       Notes
                     </label>
                     <textarea
                       value={currentMealData?.notes || ''}
                       onChange={(e) => handleNotesChange(e.target.value)}
                       placeholder="Any additional notes..."
-                      rows={3}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      rows={4}
+                      className="w-full px-5 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all"
                     />
                   </div>
                 </div>
