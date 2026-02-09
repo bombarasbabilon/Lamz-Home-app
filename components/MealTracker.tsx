@@ -41,6 +41,7 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
   const [expandedMeal, setExpandedMeal] = useState<string | null>('earlyMorning')
   const [currentMeal, setCurrentMeal] = useState<string>('')
   const [currentMealData, setCurrentMealData] = useState<MealData | null>(null)
+  const [customFood, setCustomFood] = useState<string>('')
 
   const handleToggleMeal = (mealId: string) => {
     if (expandedMeal === mealId) {
@@ -60,6 +61,12 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
     
     updateMeal(dateStr, username, currentMeal as any, updatedMeal)
     setCurrentMealData(updatedMeal)
+  }
+
+  const handleAddCustomFood = () => {
+    if (!customFood.trim()) return
+    handleAddItem(customFood.trim())
+    setCustomFood('')
   }
 
   const handleRemoveItem = (index: number) => {
@@ -173,6 +180,33 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                       </div>
                     </div>
                   )}
+
+                  {/* Custom Food Input */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Add Custom Item
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={customFood}
+                        onChange={(e) => setCustomFood(e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            handleAddCustomFood()
+                          }
+                        }}
+                        placeholder="Enter food item..."
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                      <button
+                        onClick={handleAddCustomFood}
+                        className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
 
                   {/* Quick Add Foods */}
                   <div>
