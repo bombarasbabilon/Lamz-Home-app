@@ -27,6 +27,7 @@ export default function TrackerPage() {
   const [darkMode, setDarkMode] = useState(true)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null)
   const { getDataForDate } = useHealthStore()
 
   useEffect(() => {
@@ -90,9 +91,17 @@ export default function TrackerPage() {
       const currentIndex = TABS.findIndex(tab => tab.id === activeTab)
       
       if (isLeftSwipe && currentIndex < TABS.length - 1) {
-        setActiveTab(TABS[currentIndex + 1].id)
+        setSlideDirection('left')
+        setTimeout(() => {
+          setActiveTab(TABS[currentIndex + 1].id)
+          setSlideDirection(null)
+        }, 150)
       } else if (isRightSwipe && currentIndex > 0) {
-        setActiveTab(TABS[currentIndex - 1].id)
+        setSlideDirection('right')
+        setTimeout(() => {
+          setActiveTab(TABS[currentIndex - 1].id)
+          setSlideDirection(null)
+        }, 150)
       }
     }
 
@@ -228,7 +237,15 @@ export default function TrackerPage() {
 
       {/* Content */}
       <div 
-        className="flex-1 overflow-y-auto"
+        className={`flex-1 overflow-y-auto transition-all duration-300 ${
+          darkMode
+            ? 'bg-gradient-to-br from-black via-gray-900 to-black'
+            : 'bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50'
+        } ${
+          slideDirection === 'left' ? 'animate-slideOutLeft' : 
+          slideDirection === 'right' ? 'animate-slideOutRight' : 
+          'animate-slideIn'
+        }`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}

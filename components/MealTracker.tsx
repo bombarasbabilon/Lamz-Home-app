@@ -96,7 +96,7 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
   }
 
   return (
-    <div className="p-3 sm:p-4 space-y-3 safe-area-inset-bottom pb-24">
+    <div className="p-3 sm:p-4 space-y-3 safe-area-inset-bottom pb-8">
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
         <div className="p-5 flex items-center space-x-3 border-b border-gray-100">
           <Utensils className="text-orange-600" size={28} />
@@ -197,7 +197,8 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                           }
                         }}
                         placeholder="Enter food item..."
-                        className="flex-1 px-4 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all box-border"
+                        className="flex-1 px-3 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        style={{ maxWidth: '100%', boxSizing: 'border-box' }}
                       />
                       <button
                         onClick={handleAddCustomFood}
@@ -236,7 +237,8 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                       onChange={(e) => handleNotesChange(e.target.value)}
                       placeholder="Any additional notes..."
                       rows={4}
-                      className="w-full max-w-full px-4 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all box-border"
+                      className="w-full px-3 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all"
+                      style={{ maxWidth: '100%', boxSizing: 'border-box' }}
                     />
                   </div>
                 </div>

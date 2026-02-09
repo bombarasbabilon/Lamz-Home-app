@@ -91,9 +91,9 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
   }
 
   return (
-    <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-24">
+    <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-8">
       {/* Weight Tracker Card */}
-      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-4 sm:p-6 border-2 border-purple-200">
+      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-4 sm:p-6 border-2 border-purple-200 overflow-hidden">
         <div className="flex items-center space-x-3 mb-6">
           <Scale className="text-purple-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Weight Tracker</h2>
@@ -114,7 +114,8 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
                   onBlur={handleWeightSave}
                   placeholder="Enter weight"
                   step="0.1"
-                  className="w-full max-w-full px-4 py-4 text-3xl font-bold text-center border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all box-border"
+                  className="w-full px-3 py-4 text-3xl font-bold text-center border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+                  style={{ maxWidth: '100%', boxSizing: 'border-box' }}
                 />
               </div>
               
@@ -186,12 +187,13 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
               onBlur={handleWeightSave}
               placeholder="How are you feeling? Any observations..."
               rows={3}
-              className="w-full max-w-full px-4 py-4 text-base border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none transition-all box-border"
+              className="w-full px-3 py-4 text-base border-2 border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none transition-all"
+              style={{ maxWidth: '100%', boxSizing: 'border-box' }}
             />
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 overflow-hidden">
         <div className="flex items-center space-x-3 mb-8">
           <Dumbbell className="text-green-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Workout</h2>
@@ -328,7 +330,8 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
                 onChange={(e) => setWorkoutData({ ...workoutData, notes: e.target.value })}
                 placeholder="How did it go? Any observations..."
                 rows={3}
-                className="w-full max-w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none transition-all box-border"
+                className="w-full px-3 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none transition-all"
+                style={{ maxWidth: '100%', boxSizing: 'border-box' }}
               />
             </div>
           </div>
