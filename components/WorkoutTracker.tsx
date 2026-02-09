@@ -300,20 +300,6 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
               </div>
             </div>
 
-            {/* Notes */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Notes (optional)
-              </label>
-              <textarea
-                value={workoutData.notes}
-                onChange={(e) => setWorkoutData({ ...workoutData, notes: e.target.value })}
-                placeholder="How did it go? Any observations..."
-                rows={3}
-                className="w-full max-w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none transition-all box-border"
-              />
-            </div>
-
             {/* Action Buttons */}
             <div className="space-y-3">
               <button
@@ -330,6 +316,20 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
               >
                 Mark as Rest Day
               </button>
+            </div>
+
+            {/* Notes */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Notes (optional)
+              </label>
+              <textarea
+                value={workoutData.notes}
+                onChange={(e) => setWorkoutData({ ...workoutData, notes: e.target.value })}
+                placeholder="How did it go? Any observations..."
+                rows={3}
+                className="w-full max-w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none transition-all box-border"
+              />
             </div>
           </div>
         )}

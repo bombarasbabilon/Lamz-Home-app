@@ -25,6 +25,8 @@ export default function TrackerPage() {
   const [showDatePicker, setShowDatePicker] = useState(false)
   const [username, setUsername] = useState('')
   const [darkMode, setDarkMode] = useState(true)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
   const { getDataForDate } = useHealthStore()
 
   useEffect(() => {
@@ -67,6 +69,35 @@ export default function TrackerPage() {
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date)
     setShowDatePicker(false)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe || isRightSwipe) {
+      const currentIndex = TABS.findIndex(tab => tab.id === activeTab)
+      
+      if (isLeftSwipe && currentIndex < TABS.length - 1) {
+        setActiveTab(TABS[currentIndex + 1].id)
+      } else if (isRightSwipe && currentIndex > 0) {
+        setActiveTab(TABS[currentIndex - 1].id)
+      }
+    }
+
+    setTouchStart(0)
+    setTouchEnd(0)
   }
 
   const isToday = format(selectedDate, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')
@@ -196,7 +227,12 @@ export default function TrackerPage() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto">
+      <div 
+        className="flex-1 overflow-y-auto"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {ActiveTabComponent && (
           <ActiveTabComponent
             selectedDate={selectedDate}

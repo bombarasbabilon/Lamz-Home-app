@@ -133,6 +133,14 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
             </div>
           </div>
 
+          {/* Save Button */}
+          <button
+            onClick={handleSave}
+            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-lg py-5 min-h-[64px] rounded-xl transition-all shadow-lg active:scale-98"
+          >
+            Save Sleep Data
+          </button>
+
           {/* Notes */}
           <div>
             <label className="block text-base font-semibold text-gray-700 mb-3">
@@ -146,14 +154,6 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
               className="w-full max-w-full px-4 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none transition-all box-border"
             />
           </div>
-
-          {/* Save Button */}
-          <button
-            onClick={handleSave}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-lg py-5 min-h-[64px] rounded-xl transition-all shadow-lg active:scale-98"
-          >
-            Save Sleep Data
-          </button>
         </div>
       </div>
     </div>
