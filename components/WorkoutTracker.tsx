@@ -91,7 +91,7 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
   }
 
   return (
-    <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-8">
+    <div className="p-3 sm:p-4 space-y-4 pb-4">
       {/* Weight Tracker Card */}
       <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-4 sm:p-6 border-2 border-purple-200 overflow-hidden">
         <div className="flex items-center space-x-3 mb-6">

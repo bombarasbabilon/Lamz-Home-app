@@ -237,7 +237,7 @@ export default function TrackerPage() {
 
       {/* Content */}
       <div 
-        className={`flex-1 overflow-y-auto transition-all duration-300 ${
+        className={`flex-1 overflow-y-auto transition-all duration-300 min-h-0 ${
           darkMode
             ? 'bg-gradient-to-br from-black via-gray-900 to-black'
             : 'bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50'
@@ -250,12 +250,18 @@ export default function TrackerPage() {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {ActiveTabComponent && (
-          <ActiveTabComponent
-            selectedDate={selectedDate}
-            username={username}
-          />
-        )}
+        <div className={`min-h-full ${
+          darkMode
+            ? 'bg-gradient-to-br from-black via-gray-900 to-black'
+            : 'bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50'
+        }`}>
+          {ActiveTabComponent && (
+            <ActiveTabComponent
+              selectedDate={selectedDate}
+              username={username}
+            />
+          )}
+        </div>
       </div>
 
       {/* Date Picker Modal */}

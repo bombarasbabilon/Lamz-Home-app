@@ -64,7 +64,7 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
   const duration = calculateDuration()
 
   return (
-    <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-8">
+    <div className="p-3 sm:p-4 space-y-4 pb-4">
       <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 overflow-hidden">
         <div className="flex items-center space-x-3 mb-8">
           <Moon className="text-indigo-600" size={28} />
