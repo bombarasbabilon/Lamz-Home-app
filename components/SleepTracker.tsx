@@ -64,14 +64,14 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
   const duration = calculateDuration()
 
   return (
-    <div className="p-3 sm:p-4 space-y-4 pb-4">
-      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 overflow-hidden">
-        <div className="flex items-center space-x-3 mb-8">
+    <div className="p-3 sm:p-4 space-y-3 pb-3">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 overflow-hidden mb-0">
+        <div className="flex items-center space-x-3 mb-6">
           <Moon className="text-indigo-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Sleep Schedule</h2>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-5">
           {/* Bed Time */}
           <div>
             <label className="block text-base font-semibold text-gray-700 mb-3">

@@ -91,15 +91,15 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
   }
 
   return (
-    <div className="p-3 sm:p-4 space-y-4 pb-4">
+    <div className="p-3 sm:p-4 space-y-3 pb-3">
       {/* Weight Tracker Card */}
-      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-4 sm:p-6 border-2 border-purple-200 overflow-hidden">
-        <div className="flex items-center space-x-3 mb-6">
+      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-4 sm:p-6 border-2 border-purple-200 overflow-hidden mb-0">
+        <div className="flex items-center space-x-3 mb-4">
           <Scale className="text-purple-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Weight Tracker</h2>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           {/* Weight Input */}
           <div>
             <label className="block text-base font-semibold text-gray-700 mb-3">
@@ -193,8 +193,8 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 overflow-hidden">
-        <div className="flex items-center space-x-3 mb-8">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 overflow-hidden mb-0">
+        <div className="flex items-center space-x-3 mb-6">
           <Dumbbell className="text-green-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Workout</h2>
         </div>
@@ -339,7 +339,7 @@ export default function WorkoutTracker({ selectedDate, username }: WorkoutTracke
       </div>
 
       {/* Recommended Target */}
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+      <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mb-0">
         <p className="text-sm text-blue-900 font-medium">
           💡 Recommended: 60 minutes of physical activity, 6 days a week
         </p>

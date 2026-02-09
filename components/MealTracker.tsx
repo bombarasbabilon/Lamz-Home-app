@@ -96,8 +96,8 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
   }
 
   return (
-    <div className="p-3 sm:p-4 space-y-3 pb-4">
-      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="p-3 sm:p-4 space-y-3 pb-3">
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-0">
         <div className="p-5 flex items-center space-x-3 border-b border-gray-100">
           <Utensils className="text-orange-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Meals</h2>
