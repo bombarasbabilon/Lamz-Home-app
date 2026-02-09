@@ -197,7 +197,7 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                           }
                         }}
                         placeholder="Enter food item..."
-                        className="flex-1 px-5 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        className="flex-1 px-4 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all box-border"
                       />
                       <button
                         onClick={handleAddCustomFood}
@@ -236,7 +236,7 @@ export default function MealTracker({ selectedDate, username }: MealTrackerProps
                       onChange={(e) => handleNotesChange(e.target.value)}
                       placeholder="Any additional notes..."
                       rows={4}
-                      className="w-full px-5 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all"
+                      className="w-full max-w-full px-4 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all box-border"
                     />
                   </div>
                 </div>

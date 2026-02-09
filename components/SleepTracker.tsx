@@ -65,7 +65,7 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
 
   return (
     <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-24">
-      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
         <div className="flex items-center space-x-3 mb-8">
           <Moon className="text-indigo-600" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Sleep Schedule</h2>
@@ -81,7 +81,7 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
               type="time"
               value={sleepData.bedTime}
               onChange={(e) => setSleepData({ ...sleepData, bedTime: e.target.value })}
-              className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+              className="w-full max-w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all box-border"
             />
           </div>
 
@@ -94,7 +94,7 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
               type="time"
               value={sleepData.wakeTime}
               onChange={(e) => setSleepData({ ...sleepData, wakeTime: e.target.value })}
-              className="w-full px-5 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+              className="w-full max-w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all box-border"
             />
           </div>
 
@@ -143,7 +143,7 @@ export default function SleepTracker({ selectedDate, username }: SleepTrackerPro
               onChange={(e) => setSleepData({ ...sleepData, notes: e.target.value })}
               placeholder="Any observations about your sleep..."
               rows={4}
-              className="w-full px-5 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none transition-all"
+              className="w-full max-w-full px-4 py-4 text-base border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none transition-all box-border"
             />
           </div>
 

@@ -57,7 +57,7 @@ export default function WaterTracker({ selectedDate, username }: WaterTrackerPro
 
   return (
     <div className="p-3 sm:p-4 space-y-6 safe-area-inset-bottom pb-24">
-      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
         <div className="flex items-center space-x-3 mb-8">
           <Droplet className="text-blue-500" size={28} />
           <h2 className="text-2xl font-bold text-gray-900">Water Intake</h2>
